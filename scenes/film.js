@@ -1,0 +1,100 @@
+/* ─────────────────────────────────────────────────────────────
+   SORUNUN PEŞİNDE — BTY.6.2.2 (senaryo)
+   Her vuruş bir altyazıdır: tr, en, note (öğretmen için seslendirme).
+   Değiştirdikten sonra: npm run build
+   ───────────────────────────────────────────────────────────── */
+BF.defineFilm({
+  meta: {
+    slug: 'sorunun-pesinde', title: 'Sorunun Peşinde', titleEn: 'Chasing the Question', code: 'BTY.6.2.2',
+    outcomeEn: 'Identifying problems suited to spreadsheet programs',
+    summary: 'Günlük harcama planı, sınıf kitap takibi ve haftalık egzersiz çizelgesi gibi durumlardan hangilerinin tablolama programıyla çözülmeye uygun olduğu belirlenir. İyi bir araştırma sorusunun özellikleri (ölçülebilir, karşılaştırılabilir, açık) tanıtılır. Her gerçek yaşam durumu için veriyle cevaplanabilecek araştırma soruları yazılır. Son olarak örnek sorular veriye dayalı olup olmadıklarına göre değerlendirilir.',
+    summaryEn: 'Karo decides which real-life situations suit a spreadsheet, learns what makes a good research question (measurable, comparable, clear), writes data-driven questions for each situation and judges example questions.',
+    blurb: 'Tabloya uygun gerçek yaşam durumu ve veriyle cevaplanabilecek araştırma soruları.',
+    posterAlt: 'Başlık ve Karo; çevresinde soru işareti, tablo, para ve kitap karoları',
+  },
+  scenes: [
+    { type: 'intro', icons: [{ icon: 'question', c: 'mor' }, { icon: 'sheet', c: 'zumrut' }, { icon: 'money', c: 'safran' }, { icon: 'library', c: 'mercan' }, { icon: 'clock', c: 'turkuaz' }, { icon: 'chart', c: 'kobalt' }, { icon: 'target', c: 'mercan' }, { icon: 'search', c: 'turkuaz' }],
+      beats: [
+        { tr: 'Harçlığım ay sonuna yetmiyor!', en: 'My pocket money runs out before the month ends!', extra: 1,
+          note: 'Karo\'nun harçlığı her ay bitmeden tükeniyor. Parası nereye gidiyor? Bunu nasıl anlayabilir?', karo: { mood: 'worried', caret: '?' } },
+        { tr: 'Doğru soruyu sorarsam cevabı verilerde bulurum', en: 'If I ask the right question, the data will answer', extra: 1,
+          note: 'Bir problemi tablolama programıyla çözmek için önce doğru durumu ve doğru soruyu belirlemeliyiz.' },
+      ] },
+    { type: 'sort', name: 'Tabloya uygun mu?', en: 'Does it suit a table?', desc: 'Tablolama programının kullanımına uygun gerçek yaşam durumları.', out: 'a',
+      bins: [{ label: 'TABLOYA UYGUN', c: 'zumrut' }, { label: 'TABLO GEREKMEZ', c: 'safran' }],
+      items: [
+        { icon: 'money', name: 'Günlük harcamalarım', bin: 0, beat: 1 },
+        { icon: 'library', name: 'Sınıfın okuduğu kitaplar', bin: 0, beat: 1 },
+        { icon: 'clock', name: 'Haftalık egzersiz sürem', bin: 0, beat: 1 },
+        { icon: 'palette', name: 'En sevdiğim renk', bin: 1, beat: 2 },
+        { icon: 'pen', name: 'Bir şiir yazmak', bin: 1, beat: 2 },
+      ],
+      beats: [
+        { tr: 'Hangi durumlar tabloya uygun?', en: 'Which situations suit a spreadsheet?',
+          note: 'Tablolama programı, sayılarla ifade edilen ve zamanla biriken veriler için uygundur. Durumları gruplayalım.' },
+        { tr: 'Harcama, kitap, egzersiz: sayılarla izlenir', en: 'Spending, books, exercise: tracked with numbers', extra: 1,
+          note: 'Günlük harcamalar, sınıfın okuduğu kitaplar ve haftalık egzersiz süresi sayılarla izlenir. Tabloya çok uygun.' },
+        { tr: 'Tek bir bilgi ya da yaratıcı iş için gerekmez', en: 'Not needed for a single fact or creative work',
+          note: 'En sevdiğimiz renk tek bir bilgidir; şiir yazmak ise yaratıcı bir iştir. Bunlar için tablo gerekmez.' },
+      ] },
+    { type: 'cards', name: 'İyi bir soru', en: 'A good question', desc: 'Veriye dayalı araştırma sorusunun özellikleri.', out: 'b',
+      cards: [
+        { word: 'ÖLÇÜLEBİLİR', def: 'Cevabı sayıyla verilir: kaç, ne kadar', icon: 'sheet', c: 'kobalt' },
+        { word: 'KARŞILAŞTIRILABİLİR', def: 'En çok, en az, hangisi daha fazla', icon: 'chart', c: 'mercan' },
+        { word: 'AÇIK', def: 'Ne sorduğu, hangi zamanı kapsadığı belli', icon: 'target', c: 'turkuaz' },
+      ],
+      result: { word: 'ARAŞTIRMA SORUSU', c: 'safran', join: false, chips: ['toplam', 'karşılaştırma', 'grafik'], line: 'Cevabı verilerde saklı olan soru' },
+      beats: [
+        { tr: 'Ölçülebilir: cevabı bir sayı olsun', en: 'Measurable: the answer is a number',
+          note: 'İyi bir araştırma sorusunun cevabı sayılarla verilebilir: kaç tane, ne kadar, kaç dakika.' },
+        { tr: 'Karşılaştırılabilir: en çok, en az', en: 'Comparable: most, least',
+          note: 'İyi bir soru karşılaştırma yapmamızı sağlar: en çok, en az, hangisi daha fazla.' },
+        { tr: 'Açık: ne ve ne zaman belli', en: 'Clear: what and when are stated',
+          note: 'İyi bir soru açıktır. Neyi sorduğu ve hangi zamanı kapsadığı bellidir: bu hafta, bu ay gibi.' },
+        { tr: 'Cevabı verilerde saklı olan soru', en: 'A question whose answer hides in the data', extra: 1,
+          note: 'Böyle sorular toplam, karşılaştırma ve grafik gibi çıktılarla cevaplanabilir.' },
+      ] },
+    { type: 'columns', name: 'Sorularımızı yazalım', en: 'Writing our questions', desc: 'Her durum için veriye dayalı araştırma soruları.', out: 'b',
+      cols: [{ label: 'DURUM', c: 'kobalt' }, { label: 'ARAŞTIRMA SORUSU', c: 'safran' }],
+      items: [
+        { text: 'Harcama planı', col: 0, icon: 'money', beat: 0 },
+        { text: 'Sınıf kitap takibi', col: 0, icon: 'library', beat: 1 },
+        { text: 'Egzersiz çizelgesi', col: 0, icon: 'clock', beat: 2 },
+        { text: 'Bu ay en çok neye para harcadım?', col: 1, icon: 'question', beat: 0 },
+        { text: 'Hangi ay en çok kitap okuduk?', col: 1, icon: 'question', beat: 1 },
+        { text: 'Hafta içi mi hafta sonu mu daha çok spor yaptım?', col: 1, icon: 'question', beat: 2 },
+      ],
+      beats: [
+        { tr: 'Harcama: en çok neye para harcadım?', en: 'Spending: what did I spend most on?',
+          note: 'Karo\'nun sorusu: Bu ay en çok neye para harcadım? Bu soru harcama verileriyle cevaplanabilir.' },
+        { tr: 'Kitap: hangi ay en çok okuduk?', en: 'Books: which month did we read most?',
+          note: 'Sınıfın kitap takibi için: Hangi ay en çok kitap okuduk?' },
+        { tr: 'Egzersiz: hafta içi mi, hafta sonu mu?', en: 'Exercise: weekdays or weekends?', extra: 1,
+          note: 'Egzersiz çizelgesi için: Hafta içi mi hafta sonu mu daha çok spor yaptım?' },
+      ] },
+    { type: 'judge', name: 'Veriye dayalı mı?', en: 'Data-driven?', desc: 'Örnek sorular veriyle cevaplanıp cevaplanamayacağına göre değerlendirilir.', out: 'b', labels: { ok: 'uygun', no: 'zayıf' },
+      beats: [
+        { tr: '"Harçlığım neden bitiyor?"', en: '"Why does my money run out?"',
+          note: '"Harçlığım neden bitiyor?" sorusu çok genel. Hangi veriye bakacağımız belli değil. Zayıf bir soru.',
+          row: { icon: 'question', text: '"Harçlığım neden bitiyor?"', ok: false, why: 'Çok genel, ölçülemez' } },
+        { tr: '"Bu hafta atıştırmalığa kaç lira harcadım?"', en: '"How much did I spend on snacks this week?"',
+          note: 'Bu soru ölçülebilir, zamanı belli ve cevabı bir sayıdır. Uygun bir araştırma sorusu.',
+          row: { icon: 'money', text: '"Bu hafta atıştırmalığa kaç lira harcadım?"', ok: true, why: 'Ölçülebilir, zamanı belli' } },
+        { tr: '"Kitap okumak güzel mi?"', en: '"Is reading nice?"',
+          note: '"Kitap okumak güzel mi?" bir görüş sorusudur; tabloyla cevaplanmaz. Zayıf.',
+          row: { icon: 'library', text: '"Kitap okumak güzel mi?"', ok: false, why: 'Görüş sorusu, veriyle cevaplanmaz' } },
+      ] },
+    { type: 'summary',
+      lines: [
+        { icon: 'sheet', c: 'zumrut', text: 'Sayılarla izlenen durumlar tabloya uygundur' },
+        { icon: 'question', c: 'mor', text: 'Soru ölçülebilir, karşılaştırılabilir, açık olsun' },
+        { icon: 'chart', c: 'kobalt', text: 'Cevap verilerde saklı' },
+      ],
+      beats: [
+        { tr: 'Aklında kalsın: iyi soru, iyi cevap getirir', en: 'Remember: a good question brings a good answer',
+          note: 'Aklında kalsın: tablolama programıyla çözülecek bir durumu seç ve veriyle cevaplanabilecek sorular yaz.' },
+        { tr: 'Şimdi sıra veri toplamada!', en: 'Next up: collecting data!',
+          note: 'Sorumuz hazır. Şimdi sıra verileri toplamaya geldi!' },
+      ] },
+  ],
+});
